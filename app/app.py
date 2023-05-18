@@ -1,5 +1,6 @@
 from flask import Flask , render_template, request
 import redis
+import requests
 
 cache = redis.Redis(host='localhost' , port=6379 , db=0)
 
@@ -29,8 +30,9 @@ def create_data():
 	val = cache.get(name)
 	if val == None :
 		cache.set(name,number)
-		print(f"{val} in if , name is {name} , num is {number} ")
+		requests.get(f'http://localhost:5005/{name}')
 		return f"your contact added :))"
+ 
 	#return f"name is {name} , num is {number} , val is {val}"
 	else:
 
