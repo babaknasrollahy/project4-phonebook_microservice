@@ -1,0 +1,96 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: python
+
+sepc:
+  selector:
+    app: python-app
+    type: main
+
+  ports:
+   -  port: 5000
+      targetPort: 5000
+
+
+---
+
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+
+spec:
+
+  selector:
+    app: redis-app
+    type: db
+
+  ports:
+    - port: 6379
+      targetPort: 6379
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+
+spec:
+
+  selector:
+    app: mysql-app
+    type: db
+
+  ports:
+    - port: 3306
+      targetPort: 6603
+
+
+---
+
+
+
+apiVersion: v1
+kind: Service
+metadata:
+   name: worker
+
+spec:
+
+  selector:
+    app: worker-app
+    type: worker
+
+  ports:
+   - port: 5005
+     targetPort: 5005
+
+
+
+---
+
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+
+spec:
+  selector:
+    app: nginx-app
+    type: frontend
+
+  type: NodePort
+
+  ports:
+   - port: 80
+     targetPort: 80
+     nodePort: 30001
+

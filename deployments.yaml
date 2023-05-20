@@ -1,0 +1,162 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+
+spec:
+
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-app
+      type: frontend
+
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        app: nginx-app
+        type: frontend
+
+    spec:
+      containers:
+        - name: nginx_container
+          image: ngingx:latest
+          ports:
+            - containerPort: 80
+
+
+---
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-deployment
+  labels:
+    app: python-app
+    type: main
+
+spec:
+
+  replicas: 1
+  selector:
+    matchLabels:
+      apop: python-app
+      type: main
+
+  template:
+    metadata:
+      name: python-pod
+      labels:
+        app: python-app
+        type: main
+
+    spec:
+
+      containers:
+        - name: python_container
+          image: babaknasrollahy/project5/python:latest
+          ports:
+           - containerPort: 5000
+
+
+---
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  labels:
+    app: mysql-app
+    type: db
+
+spec: 
+
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-app
+      type: db
+
+    template:
+      matadata:
+        name: mysql-pod
+        labels:
+          app: mysql-app
+          type: db
+
+    spec:
+      containers:
+        - name: mysql_container
+          image: mysql:latest
+          ports:
+           - containerPort: 3306
+
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+  labels:
+    app: redis-app
+    type: db
+
+spec:
+
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-app
+      type: db
+
+
+  template:
+    metadata:
+      name: redis-pod
+      labels:
+        app: redis-app
+        type: db
+
+
+    spec:
+      containers:
+        - name: redis_container
+          image: redis:latest
+          ports:
+            - containerPort: 6379
+
+
+---
+
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deployment
+  labels:
+    app: worker-app
+    type: worker
+
+spec:
+
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker-app
+      type: worker
+
+  spec:
+    containers:
+      - name: worker-container
+        image: babaknasrollahy/project5/worker:latest
+        ports:
+          - containerPort: 5005
+
+
+
