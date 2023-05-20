@@ -29,10 +29,12 @@ def create_data():
 	number = request.form.get('number')
 	val = cache.get(name)
 	if val == None :
+		if requests.get(f'http://localhost:5005/api/Any/{name}').text == "True" :
+			return "your contact is already exist"
 		cache.set(name,number)
 		requests.get(f'http://localhost:5005/{name}')
 		return f"your contact added :))"
- 
+
 	#return f"name is {name} , num is {number} , val is {val}"
 	else:
 
@@ -44,7 +46,12 @@ def read_data():
 	name = request.form.get('name')
 	val = cache.get(name)
 	if val == None :
-		return f"contact '{name}' undifined"
+		mysql_result = requests.get(f'http://localhost:5005/read/{name}')
+
+		if mysql_result.text == "False":
+			return f"{name} is not exist"
+		else:
+			return f"{name}		{mysql_result.text}"
 
 	else:
 		val = int(val)
