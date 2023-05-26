@@ -3,17 +3,17 @@ import redis
 import mysql.connector
 import os
 
-cache = redis.Redis(host='localhost' , port=6379 , db=0)
+
+cache = redis.Redis(host='redis' , port=6379 , db=0)
+DB_pass = os.environ.get("db_password")
 
 
-test = 1
-print(test)
 def create_database():
         mydb = mysql.connector.connect(
-                host="localhost",
+                host="mysql",
                 port="6603",
                 user="root",
-                password="babak13830"
+                password=f"{DB_pass}"
         )
 
         # create a cursor object
@@ -42,7 +42,6 @@ app = Flask(__name__)
 
 
 try :
-	print("database is already exist !!")
 	create_database()
 
 except:
@@ -50,10 +49,10 @@ except:
 
 def Get_DB():
 	mydb = mysql.connector.connect(
-		host="localhost",
+		host="mysql",
 		port='6603',
 		user="root",
-		password="babak13830",
+		password=f"{DB_pass}",
 		database="phonebook"
 	)
 	return mydb
@@ -109,5 +108,5 @@ def read_mysql(name):
 
 
 if __name__ == '__main__':
-      app.run(host='0.0.0.0', port='5005' , debug=True, use_reloader=True)
+      app.run(host="0.0.0.0", port="5005")
 

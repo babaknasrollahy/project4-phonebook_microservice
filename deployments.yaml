@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: nginx_container
-          image: ngingx:latest
+          image: babaknasrolahy/project4-nginx:latest
           ports:
             - containerPort: 80
 
@@ -56,7 +56,7 @@ spec:
 
       containers:
         - name: python_container
-          image: babaknasrollahy/project5/python:latest
+          image: babaknasrolahy/project4-python:latest
           ports:
            - containerPort: 5000
 
@@ -91,11 +91,17 @@ spec:
       containers:
         - name: mysql_container
           image: mysql:latest
+          env:
+            - name: "MYSQL_ROOT_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: db-password
+                  key: password
           ports:
            - containerPort: 3306
 
 
-
+  
 ---
 
 apiVersion: apps/v1
@@ -154,7 +160,13 @@ spec:
   spec:
     containers:
       - name: worker-container
-        image: babaknasrollahy/project5/worker:latest
+        image: babaknasrolahy/project4-worker:latest
+        env:
+           - name: "db_password"
+             valueFrom:
+                secretKeyRef:
+                  name: db-password
+                  key: password
         ports:
           - containerPort: 5005
 
