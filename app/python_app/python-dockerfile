@@ -4,7 +4,7 @@ FROM python:3.9.7-slim
 WORKDIR /app
 COPY . . 
 
-RUN pip install requirment.txt
+RUN pip3 install -r requirment.txt
 
 ENTRYPOINT ["flask" , "run"]
 

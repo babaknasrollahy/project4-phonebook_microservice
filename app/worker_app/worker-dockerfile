@@ -3,6 +3,6 @@ FROM python:3.9.7-slim
 WORKDIR /app
 COPY . .
 
-RUN pip3 install --upgrade pip && pip3 install -r requirment.txt
+RUN  pip3 install -r requirment.txt
 
 ENTRYPOINT ["flask" , "run" , "-p" , "5005"]

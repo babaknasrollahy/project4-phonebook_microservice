@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: python
 
-sepc:
+spec:
   selector:
     app: python-app
     type: main
