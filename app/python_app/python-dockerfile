@@ -6,6 +6,6 @@ COPY . .
 
 RUN pip3 install -r requirment.txt
 
-ENTRYPOINT ["flask" , "run"]
+ENTRYPOINT ["python3" , "app.py"]
 
 

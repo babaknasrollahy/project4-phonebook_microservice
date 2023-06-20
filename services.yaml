@@ -48,8 +48,8 @@ spec:
     type: db
 
   ports:
-    - port: 3306
-      targetPort: 6603
+    - port: 6603
+      targetPort: 3306
 
 
 ---

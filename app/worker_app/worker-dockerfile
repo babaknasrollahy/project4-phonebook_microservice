@@ -5,4 +5,4 @@ COPY . .
 
 RUN  pip3 install -r requirment.txt
 
-ENTRYPOINT ["flask" , "run" , "-p" , "5005"]
+ENTRYPOINT ["python3" , "app.py"]

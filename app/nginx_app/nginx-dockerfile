@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY frontend.conf .
 
-RUN cp frontend.conf /etc/nginx/conf.d/frontend.conf && rm -rf /etc/nignx/default.conf
+RUN cp frontend.conf /etc/nginx/conf.d/frontend.conf && rm -rf /etc/nginx/conf.d/default.conf
 
 
