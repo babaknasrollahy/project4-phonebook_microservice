@@ -1,7 +1,7 @@
 FROM python:3.9.7-slim
 
 WORKDIR /app
-COPY . .
+COPY ./app/worker_app/ .
 
 RUN  pip3 install -r requirment.txt
 
