@@ -17,9 +17,9 @@ node('master')
 
 	stage('Deploy_IN_Kubernetes'){
 		unstash "COPY"
-		sh 'sh 'echo $babakPassword | sudo -S su -c "kubectl applay -f db_pass_secret.yaml"'
-		sh 'echo $babakPassword | sudo -S su -c "kubectl applay -f services.yaml"'
-		sh 'sh 'echo $babakPassword | sudo -S su -c "kubectl applay -f deployments.yaml"''
+		sh "echo $babakPassword | sudo -S su -c 'kubectl applay -f db_pass_secret.yaml' "
+		sh "echo $babakPassword | sudo -S su -c 'kubectl applay -f services.yaml' "
+		sh "echo $babakPassword | sudo -S su -c 'kubectl applay -f deployments.yaml' "
 	}
 	
 
