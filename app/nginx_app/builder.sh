@@ -6,4 +6,4 @@ docker build -t babaknasrolahy/project4-nginx:latest -f ./app/nginx_app/nginx-do
 
 ##Push Docker Image (nginx dockerimages)
 
-echo $babakPassword |sudo -S docker push babaknasrolahy/project4-nginx:latest
+sudo -S docker push babaknasrolahy/project4-nginx:latest

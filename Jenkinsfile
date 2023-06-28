@@ -7,9 +7,9 @@ node('master')
 
 
         stage('Create&Push_Docker_Images'){
-                sh './app/python_app/builder.sh'
-                sh './app/nginx_app/builder.sh'
-                sh './app/worker_app/builder.sh'
+                sh 'echo $babakPassword|sudo -S ./app/python_app/builder.sh'
+                sh 'echo $babakPassword|sudo -S ./app/nginx_app/builder.sh'
+                sh 'echo $babakPassword|sudo -S ./app/worker_app/builder.sh'
         }
 
 
