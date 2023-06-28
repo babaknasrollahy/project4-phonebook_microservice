@@ -16,9 +16,9 @@ node('master')
 
 
 	stage('Deploy_IN_Kubernetes'){
-		sh "echo 'babak13830' | sudo -S su -c 'kubectl applay -f db_pass_secret.yaml' babak"
-		sh "echo 'babak13830' | sudo -S su -c 'kubectl applay -f services.yaml' babak"
-		sh "echo 'babak13830' | sudo -S su -c 'kubectl applay -f deployments.yaml' babak"
+		sh "echo 'babak13830' | sudo -S su -c 'kubectl apply -f db_pass_secret.yaml' babak"
+		sh "echo 'babak13830' | sudo -S su -c 'kubectl apply -f services.yaml' babak"
+		sh "echo 'babak13830' | sudo -S su -c 'kubectl apply -f deployments.yaml' babak"
 	}
 	
 
