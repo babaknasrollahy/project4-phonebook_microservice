@@ -2,8 +2,8 @@
 
 ##Create Docker Image (python dockerimage):
 
-docker build -t babaknasrolahy/project4-python:latest -f python-dockerfile . 
+docker build -t babaknasrolahy/project4-python:latest -f ./app/python_app/python-dockerfile .
 
 ##Push Docker Image (python dockerimages)
 
-docker push babaknasrolahy/project4-python:latest
+sudo -S docker push babaknasrolahy/project4-python:latest

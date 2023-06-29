@@ -2,10 +2,10 @@ FROM python:3.9.7-slim
 
 
 WORKDIR /app
-COPY . . 
+COPY ./app/python_app/ . 
 
 RUN pip3 install -r requirment.txt
 
-ENTRYPOINT ["flask" , "run"]
+ENTRYPOINT ["python3" , "app.py"]
 
 

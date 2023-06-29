@@ -13,7 +13,7 @@ def create_database():
                 host="mysql",
                 port="6603",
                 user="root",
-                password=f"{DB_pass}"
+                password="babak13830"
         )
 
         # create a cursor object
@@ -52,7 +52,7 @@ def Get_DB():
 		host="mysql",
 		port='6603',
 		user="root",
-		password=f"{DB_pass}",
+		password="babak13830",
 		database="phonebook"
 	)
 	return mydb
